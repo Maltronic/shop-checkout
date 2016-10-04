@@ -10,7 +10,7 @@ Written in Java using the DropWizard Framework and Maven.
 mvn package
 
 - Run the server from the command-line using java:
-java -jar target/shop-checkout-1.0.0-SNAPSHOT.jar server config_default.myl
+java -jar target/shop-checkout-1.0.0-SNAPSHOT.jar server config_default.yml
 
 
 # Workflow:
@@ -50,3 +50,27 @@ Given that multiples of a type of fruit appear in an order
 When above comma-separated string is input
 And the fruit names duplicated multiple times within the order
 Then I should see the total summation returned includes every duplicate of fruit types
+
+
+
+### Sprint 2
+
+##### Critical Requirements
+- Must allow - buy one, get one free offer on Apples
+- Must allow - 3 for the price of 2 offer on Oranges
+
+
+##### Story: Shop Checkout
+In order to allow offers on products
+As a shop owner
+I want to have offers modify the total after calculation based on the order content
+
+##### Spec 1:
+Given that an order has multiple apples
+When above comma-separated string is input
+Then return a total modified so the summation of apple item prices is halved for the number of apples divisible by 2
+
+##### Spec 2:
+Given that an order has multiple oranges
+When above comma-separated string is input
+Then return a total modified so the summation of orange item prices is reduced by 1/3 for the number of oranges divisible by 3

@@ -2,6 +2,7 @@ package io.maltronic.checkout.resources;
 
 import io.maltronic.checkout.entities.Basket;
 import io.maltronic.checkout.entities.Product;
+import io.maltronic.checkout.services.OffersService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -23,15 +24,16 @@ public class BasketResource {
                 .map(name -> products.get(name).clone()).filter(Product::isActive).collect(Collectors.toList());
         Basket basket = new Basket(1, items);
 
-        return Response.ok(basket.getTotal()).build();
+        double total = new OffersService().getOffersTotal(items);
+        return Response.ok(total).build();
     }
 
     private Map<String, Product> setShopProducts() {
 
         // @TODO Replace hardcoded products with a service
         Map<String, Product> products = new HashMap<>();
-        products.put("Apple", new Product(1, "Apple", 0.60, true));
-        products.put("Orange", new Product(2, "Orange", 0.25, true));
+        products.put(Product.TYPE_APPLE, new Product(1, Product.TYPE_APPLE, 0.60, true));
+        products.put(Product.TYPE_ORANGE, new Product(2, Product.TYPE_ORANGE, 0.25, true));
 
         return products;
     }

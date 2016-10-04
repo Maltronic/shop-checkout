@@ -33,6 +33,20 @@ public class BasketResourceTest {
     public void testTotalWithMultiples() throws Exception {
         String input = "Apple,Apple";
         Response result = basketResource.totalBasket(input);
-        assertThat(result.getEntity()).isEqualTo(1.20);
+        assertThat(result.getEntity()).isEqualTo(0.60);
+    }
+
+    @Test
+    public void testTotalOffer1() throws Exception {
+        String input = "Orange,Apple,Apple,Apple,Apple,Apple";
+        Response result = basketResource.totalBasket(input);
+        assertThat(result.getEntity()).isEqualTo(2.05);
+    }
+
+    @Test
+    public void testTotalOffer2() throws Exception {
+        String input = "Orange,Orange,Orange,Orange,Orange,Apple";
+        Response result = basketResource.totalBasket(input);
+        assertThat(result.getEntity()).isEqualTo(1.60);
     }
 }

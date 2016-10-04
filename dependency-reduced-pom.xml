@@ -26,7 +26,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                  <mainClass>io.maltronic.shop-checkout.CheckoutApplication</mainClass>
+                  <mainClass>io.maltronic.checkout.CheckoutApplication</mainClass>
                 </transformer>
               </transformers>
             </configuration>

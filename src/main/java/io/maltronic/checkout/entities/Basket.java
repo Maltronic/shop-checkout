@@ -11,6 +11,10 @@ public class Basket {
         this.items = items;
     }
 
+    public List<Product> getItems() {
+        return items;
+    }
+
     public double getTotal() {
         return items.stream().mapToDouble(Product::getPrice).sum();
     }

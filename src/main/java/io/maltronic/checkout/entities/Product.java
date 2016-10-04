@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Product implements Cloneable {
 
+    public static final String TYPE_APPLE = "Apple";
+    public static final String TYPE_ORANGE = "Orange";
+
     private final int id;
     private final String name;
     private final double price;
@@ -14,6 +17,11 @@ public class Product implements Cloneable {
         this.name = name;
         this.price = price;
         this.active = active;
+    }
+
+    @JsonProperty
+    public String getName() {
+        return name;
     }
 
     @JsonProperty
